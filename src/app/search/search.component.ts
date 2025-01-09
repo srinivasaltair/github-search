@@ -39,6 +39,20 @@ export class SearchComponent {
       },
       error: (err) => {
         this.loadingUser = false;
+        if (err.status === 404) {
+          console.log('user not found');
+          const notFoundUser = {
+            name: this.searchText,
+            avatar_url: '',
+            userNotFound: true,
+            email: null,
+          };
+          this.usersHistory.unshift(notFoundUser);
+          this.localService.saveData(
+            'users',
+            JSON.stringify(this.usersHistory)
+          );
+        }
         console.error('Error: ', err);
       },
     });
