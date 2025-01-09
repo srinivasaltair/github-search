@@ -16,7 +16,6 @@ export class HistoryComponent implements OnInit {
   ngOnInit(): void {
     const searchHistory = this.localService.getData('users') || null;
     this.history = searchHistory ? JSON.parse(searchHistory) : [];
-    console.log(this.history);
   }
 
   clearHistory() {
