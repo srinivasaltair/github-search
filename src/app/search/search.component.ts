@@ -38,20 +38,18 @@ export class SearchComponent {
         this.localService.saveData('users', JSON.stringify(this.usersHistory));
       },
       error: (err) => {
+        this.result = null
         this.loadingUser = false;
-        if (err.status === 404) {
-          console.log('user not found');
+        if(err.status === 404) {
+          console.log('user not found')
           const notFoundUser = {
             name: this.searchText,
             avatar_url: '',
             userNotFound: true,
-            email: null,
-          };
-          this.usersHistory.unshift(notFoundUser);
-          this.localService.saveData(
-            'users',
-            JSON.stringify(this.usersHistory)
-          );
+            email: null
+          }
+          this.usersHistory.unshift(notFoundUser)
+          this.localService.saveData('users', JSON.stringify(this.usersHistory));
         }
         console.error('Error: ', err);
       },

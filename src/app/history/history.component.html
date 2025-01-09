@@ -12,20 +12,14 @@
   </div>
   <article class="w-full overflow-auto h-1/2" *ngIf="history.length">
     <div *ngFor="let h of history">
-      <div
-        *ngIf="!h.hasOwnProperty('userNotFound')"
-        class="flex gap-5 mb-2 bg-white p-4 rounded-md"
-      >
+      <div *ngIf="!h.hasOwnProperty('userNotFound')" class="flex gap-5 mb-2 bg-white p-4 rounded-md">
         <img class="w-20" [src]="h.avatar_url" alt="User Avatar" />
         <div class="flex flex-col justify-start items-start">
           <p>{{ h.name }}</p>
           <p class="text-sm text-gray-500">{{ h.email || "-" }}</p>
         </div>
       </div>
-      <div
-        *ngIf="h.hasOwnProperty('userNotFound')"
-        class="flex items-center justify-between gap-5 mb-2 bg-white p-4 rounded-md"
-      >
+      <div *ngIf="h.hasOwnProperty('userNotFound')" class="flex items-center justify-between gap-5 mb-2 bg-white p-4 rounded-md">
         <p>{{ h.name }}</p>
         <p class="text-gray-500 text-sm">User not found</p>
       </div>

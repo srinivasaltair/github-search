@@ -31,7 +31,7 @@
       </button>
     </form>
   </div>
-  <div class="flex flex-col justify-start" *ngIf="result">
+  <div class="flex flex-col justify-start">
     <p class="text-gray-500 mb-3">Search results</p>
     <p *ngIf="loadingUser" class="text-sm text-blue-600 text-center">
       ⟳ Loading...
@@ -47,7 +47,7 @@
     </article>
     <article
       class="bg-white px-2 py-3 border border-gray-200 rounded-md"
-      *ngIf="!result"
+      *ngIf="!result && !loadingUser"
     >
       <p class="text-gray-300 text-sm">User not found</p>
     </article>
