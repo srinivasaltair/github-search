@@ -23,9 +23,4 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.router.navigate(['/search']);
   }
-  // onSearch(username: string) {
-  //   this.appService.getGithubUser(username).subscribe((result) => {
-  //     console.log(result);
-  //   });
-  // }
 }
