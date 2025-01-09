@@ -1,0 +1,30 @@
+<div
+  class="flex flex-col h-[calc(100%-3rem)] md:w-1/2 lg:w-1/3 m-auto mt-32 mb-20"
+>
+  <div class="w-full flex justify-between items-center mb-5">
+    <p class="text-xl">History</p>
+    <button
+      class="bg-red-600 text-xs px-2 py-1 rounded-md text-white"
+      (click)="clearHistory()"
+    >
+      Clear History
+    </button>
+  </div>
+  <article class="w-full overflow-auto h-1/2" *ngIf="history.length">
+    <div *ngFor="let h of history">
+      <div class="flex gap-5 mb-2 bg-white p-4 rounded-md">
+        <img class="w-20" [src]="h.avatar_url" alt="User Avatar" />
+        <div class="flex flex-col justify-start items-start">
+          <p>{{ h.name }}</p>
+          <p class="text-sm text-gray-500">{{ h.email || "-" }}</p>
+        </div>
+      </div>
+    </div>
+  </article>
+  <article
+    class="bg-white px-2 py-3 border border-gray-200 rounded-md w-full"
+    *ngIf="history.length === 0"
+  >
+    <p class="text-gray-300 text-sm">No search results found.</p>
+  </article>
+</div>

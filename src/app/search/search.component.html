@@ -1,0 +1,55 @@
+<div
+  class="flex flex-col h-[calc(100%-3rem)] md:w-1/2 lg:w-1/3 m-auto mt-32 mb-20"
+>
+  <div class="flex flex-col justify-center items-center">
+    <p class="text-xl mb-5">Search Github User</p>
+    <form
+      class="flex flex-col items-center justify-center w-full"
+      (ngSubmit)="searchUser()"
+    >
+      <div class="w-full relative">
+        <span class="absolute text-gray-400 top-3 left-4">🔎︎</span>
+        <input
+          type="text"
+          placeholder="Search user by name"
+          class="px-12 py-3 rounded-md w-full mb-5"
+          name="search"
+          [(ngModel)]="searchText"
+        />
+        <span
+          *ngIf="searchText !== ''"
+          class="absolute top-3 right-4 cursor-pointer"
+          (click)="clearSearchText()"
+          >✖</span
+        >
+      </div>
+      <button
+        type="submit"
+        class="py-3 bg-teal-600 rounded-md w-full mb-5 text-white shadow-md"
+      >
+        Search
+      </button>
+    </form>
+  </div>
+  <div class="flex flex-col justify-start" *ngIf="result">
+    <p class="text-gray-500 mb-3">Search results</p>
+    <p *ngIf="loadingUser" class="text-sm text-blue-600 text-center">
+      ⟳ Loading...
+    </p>
+    <article class="bg-white p-4 rounded-md" *ngIf="result && !loadingUser">
+      <div class="flex gap-5">
+        <img class="w-20" [src]="result.avatar_url" alt="User Avatar" />
+        <div class="flex flex-col">
+          <p>{{ result.name }}</p>
+          <p>{{ result.email }}</p>
+        </div>
+      </div>
+    </article>
+    <article
+      class="bg-white px-2 py-3 border border-gray-200 rounded-md"
+      *ngIf="!result"
+    >
+      <p class="text-gray-300 text-sm">User not found</p>
+    </article>
+  </div>
+</div>
